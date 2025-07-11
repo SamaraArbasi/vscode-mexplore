@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz de Esportes</title>
+    <link rel="stylesheet" href="../static/quiz.css" />
+  <link rel="icon" href="../static/favicon.png" type="image/png" />
+</head>
+
+
+<body>
+  <div class="quiz-container">
+    <h1>Qual Esporte Combina com Você?</h1>
+
+    <form id="quiz-form">
+      <div class="question">
+  <p>1. Qual dessas qualidades você mais se identifica?</p>
+  <input type="radio" id="q1-1" name="q1" value="parkour">
+  <label for="q1-1">Agilidade e coragem</label>
+
+  <input type="radio" id="q1-2" name="q1" value="slackline">
+  <label for="q1-2">Equilíbrio e foco</label>
+
+  <input type="radio" id="q1-3" name="q1" value="ultimate">
+  <label for="q1-3">Espírito de equipe</label>
+</div>
+
+<div class="question">
+  <p>2. Onde você prefere praticar esportes?</p>
+  <input type="radio" id="q2-1" name="q2" value="slackline">
+  <label for="q2-1">Em parques tranquilos</label>
+
+  <input type="radio" id="q2-2" name="q2" value="ultimate">
+  <label for="q2-2">Em campos abertos com amigos</label>
+
+  <input type="radio" id="q2-3" name="q2" value="parkour">
+  <label for="q2-3">Em ambientes urbanos</label>
+</div>
+
+<div class="question">
+  <p>3. O que mais te motiva?</p>
+  <input type="radio" id="q3-1" name="q3" value="ultimate">
+  <label for="q3-1">Superar desafios com o time</label>
+
+  <input type="radio" id="q3-2" name="q3" value="parkour">
+  <label for="q3-2">Superar obstáculos e seus limites</label>
+
+  <input type="radio" id="q3-3" name="q3" value="slackline">
+  <label for="q3-3">Alcançar concentração e controle</label>
+</div>
+
+<div class="question">
+  <p>4. Qual ambiente te inspira mais?</p>
+  <input type="radio" id="q4-1" name="q4" value="slackline">
+  <label for="q4-1">Natureza e serenidade</label>
+
+  <input type="radio" id="q4-2" name="q4" value="ultimate">
+  <label for="q4-2">Energia de grupo e interação</label>
+
+  <input type="radio" id="q4-3" name="q4" value="parkour">
+  <label for="q4-3">Cidade e obstáculos urbanos</label>
+</div>
+
+<div class="question">
+  <p>5. Qual tipo de desafio você prefere?</p>
+  <input type="radio" id="q5-1" name="q5" value="parkour">
+  <label for="q5-1">Superar seus próprios limites físicos</label>
+
+  <input type="radio" id="q5-2" name="q5" value="ultimate">
+  <label for="q5-2">Trabalhar em equipe para vencer</label>
+
+  <input type="radio" id="q5-3" name="q5" value="slackline">
+  <label for="q5-3">Manter a calma sob pressão</label>
+</div>
+
+<div class="question">
+  <p>6. Você prefere esportes:</p>
+  <input type="radio" id="q6-1" name="q6" value="ultimate">
+  <label for="q6-1">Competitivos e coletivos</label>
+
+  <input type="radio" id="q6-2" name="q6" value="slackline">
+  <label for="q6-2">Mais meditativos e solo</label>
+
+  <input type="radio" id="q6-3" name="q6" value="parkour">
+  <label for="q6-3">Radicais e criativos</label>
+</div>
+
+<div class="question">
+  <p>7. Como você se sente sobre regras?</p>
+  <input type="radio" id="q7-1" name="q7" value="parkour">
+  <label for="q7-1">Prefiro criar meu próprio caminho</label>
+
+  <input type="radio" id="q7-2" name="q7" value="ultimate">
+  <label for="q7-2">Gosto de seguir regras claras</label>
+
+  <input type="radio" id="q7-3" name="q7" value="slackline">
+  <label for="q7-3">Regras não importam tanto</label>
+</div>
+
+<div class="question">
+  <p>8. Qual dessas frases mais te representa?</p>
+  <input type="radio" id="q8-1" name="q8" value="slackline">
+  <label for="q8-1">“Mente tranquila, corpo firme.”</label>
+
+  <input type="radio" id="q8-2" name="q8" value="ultimate">
+  <label for="q8-2">“Juntos vamos mais longe.”</label>
+
+  <input type="radio" id="q8-3" name="q8" value="parkour">
+  <label for="q8-3">“O obstáculo é o caminho.”</label>
+</div>
+
+<div class="question">
+  <p>9. Você se considera mais:</p>
+  <input type="radio" id="q9-1" name="q9" value="ultimate">
+  <label for="q9-1">Comunicativo e colaborativo</label>
+
+  <input type="radio" id="q9-2" name="q9" value="parkour">
+  <label for="q9-2">Independente e desafiador</label>
+
+  <input type="radio" id="q9-3" name="q9" value="slackline">
+  <label for="q9-3">Calmo e introspectivo</label>
+</div>
+
+<div class="question">
+  <p>10. O que você espera de um esporte?</p>
+  <input type="radio" id="q10-1" name="q10" value="parkour">
+  <label for="q10-1">Superar obstáculos e se expressar</label>
+
+  <input type="radio" id="q10-2" name="q10" value="slackline">
+  <label for="q10-2">Conexão mente-corpo</label>
+
+  <input type="radio" id="q10-3" name="q10" value="ultimate">
+  <label for="q10-3">Diversão com os amigos</label>
+</div>
+
+
+      <button type="submit">Ver meu esporte ideal</button>
+    </form>
+
+    <div class="resultado" id="resultado"></div>
+    <button type="button" id="tentar-novamente" style="display:none;">Tentar novamente</button>
+  </div>
+
+  <script>
+  const form = document.getElementById('quiz-form');
+  const resultado = document.getElementById('resultado');
+  const btnTentarNovamente = document.getElementById('tentar-novamente');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const respostas = Array.from({ length: 10 }, (_, i) => {
+      const q = `q${i + 1}`;
+      const selected = form.querySelector(`input[name="${q}"]:checked`);
+      return selected ? selected.value : null;
+    });
+
+    if (respostas.includes(null)) {
+      resultado.textContent = 'Por favor, responda todas as perguntas.';
+      resultado.style.color = '#ea5083';
+      return;
+    }
+
+    const contagem = { slackline: 0, parkour: 0, ultimate: 0 };
+respostas.forEach(resp => contagem[resp]++);
+
+// Encontra a maior pontuação
+const valores = Object.entries(contagem);
+const maiorPontuacao = Math.max(...valores.map(([_, v]) => v));
+// Filtra os esportes empatados
+const empatados = valores.filter(([_, v]) => v === maiorPontuacao).map(([k]) => k);
+// Escolhe um aleatoriamente entre os empatados
+const esporteEscolhido = empatados[Math.floor(Math.random() * empatados.length)];
+
+let mensagem = '';
+if (esporteEscolhido === 'slackline') {
+  mensagem = 'Você combina com o Slackline! Foco, equilíbrio e paz interior definem você.';
+} else if (esporteEscolhido === 'ultimate') {
+  mensagem = 'Ultimate Frisbee é sua cara! Você ama trabalhar em equipe e se divertir.';
+} else {
+  mensagem = 'Parkour é o seu estilo! Você é ousado, criativo e adora movimento.';
+}
+
+
+    resultado.textContent = mensagem;
+    resultado.style.color = '#18adf2';
+    btnTentarNovamente.style.display = 'inline-block';
+  });
+
+  btnTentarNovamente.addEventListener('click', function() {
+    form.reset();
+    resultado.textContent = '';
+    btnTentarNovamente.style.display = 'none';
+  });
+</script>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tudo sobre Slackline</title>
+
+  <style>
+    /* ================== Reset e Estilo Global ================== */
+    body {
+      background-color: #1a1a1a;
+      color: #ddd;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+        animation: fadePage 1s ease-in-out;
+    }
+
+    @keyframes fadePage {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(242, 108, 24, 0.3);
+      border: 1px solid #333;
+    }
+
+    /* ================== Tipografia ================== */
+    h1, h2 {
+      color: #f26c18;
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 40px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ================== Botões ================== */
+    .botao-voltar {
+      background: linear-gradient(90deg, #f26c18, #d65400);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(242, 108, 24, 0.7);
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      position: absolute;
+      left: 30px;
+      top: 25px;
+    }
+
+    .botao-voltar:hover {
+      background: linear-gradient(90deg, #d65400, #f26c18);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(242, 108, 24, 0.9);
+    }
+
+    /* ================== Header ================== */
+    header {
+      background-color: #000000;
+      padding: 60px 40px 30px;
+      border-bottom: 1px solid #222;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      color: #f26c18;
+      font-weight: 400;
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ================== Seções ================== */
+    #apresentacao, #missao, #tipos, #beneficios, #curiosidades {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      border-radius: 12px;
+      margin: 40px auto;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .apresentacao-box, .container-missao {
+      max-width: 900px;
+      background: rgba(34, 34, 34, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 24px rgba(242, 108, 24, 0.15);
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ddd;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .apresentacao-box h2, .container-missao h2 {
+      color: #f26c18;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .container-missao h2::after {
+      content: "";
+      width: 80px;
+      height: 5px;
+      background: #f26c18;
+      display: block;
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
+    /* ================== Tipos de Slackline ================== */
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      margin-top: 30px;
+    }
+
+    .valor-card {
+      background: #444;
+      padding: 25px 20px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 200px;
+      cursor: pointer;
+      height: auto;
+      box-shadow: 0 4px 12px rgba(242, 108, 24, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .valor-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .valor-card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(242, 108, 24, 0.7);
+    }
+
+    .valor-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f0f0f0, #ddd);
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .valor-card p {
+      font-size: 1em;
+      color: #ffff;
+      line-height: 1.4;
+    }
+
+    .valor-card strong {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    /* ================== Rodapé ================== */
+    footer.footer {
+      background-color: #000000;
+      border-top: 1px solid #222;
+      padding: 20px 0;
+      color: #ccc;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    footer.footer a {
+      color: #f26c18;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer.footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ================== Animação ================== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+    
+  <header>
+    <h1>Tudo sobre Slackline</h1>
+  </header>
+
+  <main class="page-wrapper">
+    <section id="apresentacao">
+      <div class="apresentacao-box">
+        <h2>O que é Slackline?</h2>
+        <p>Slackline é um esporte de equilíbrio no qual uma fita é esticada entre dois pontos fixos. Os praticantes caminham, saltam ou realizam manobras sobre essa fita. Ao contrário da corda bamba, o slackline tem elasticidade, o que proporciona rebote e uma experiência dinâmica.</p>
+      </div>
+    </section>
+
+    <section id="missao">
+      <div class="container-missao">
+        <h2>História do Slackline</h2>
+        <p>O slackline surgiu na Califórnia nos anos 80, quando escaladores começaram a andar sobre correntes e cordas durante o tempo livre. A prática se espalhou e se desenvolveu como uma modalidade própria, com variações que vão desde equilíbrio estático até acrobacias extremas em grandes alturas.</p>
+      </div>
+    </section>
+
+    <section id="tipos">
+      <div class="container-missao">
+        <h2>Tipos de Slackline</h2>
+        <div class="valores-grid">
+          <div class="valor-card">
+            <img src="https://img.icons8.com/fluency/96/rope.png" alt="Tradicional" />
+            <strong>Slackline Tradicional</strong>
+            <p>Praticado em fitas com baixa altura. Ideal para iniciantes e manobras básicas.</p>
+          </div>
+          <div class="valor-card">
+            <img src="https://img.icons8.com/fluency/96/speed.png" alt="Trickline" />
+            <strong>Trickline</strong>
+            <p>Modalidade de saltos e manobras acrobáticas. Exige reflexos e força.</p>
+          </div>
+          <div class="valor-card">
+            <img src="https://img.icons8.com/fluency/96/mountain.png" alt="Highline" />
+            <strong>Highline</strong>
+            <p>Fita posicionada a grandes alturas. Sempre praticado com equipamentos de segurança.</p>
+          </div>
+          <div class="valor-card">
+            <img src="https://img.icons8.com/fluency/96/lake.png" alt="Waterline" />
+            <strong>Waterline</strong>
+            <p>Praticado sobre a água. Ótimo para o verão e quedas divertidas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container-missao">
+        <h2>Benefícios do Slackline</h2>
+        <p>O slackline oferece uma série de benefícios físicos e mentais. Entre os principais estão:</p>
+        <ul style="text-align: left; color: #ccc; max-width: 700px; margin: 0 auto;">
+          <li><strong>Equilíbrio:</strong> Treina o centro de gravidade e a coordenação motora.</li>
+          <li><strong>Força muscular:</strong> Trabalha intensamente a musculatura do core e das pernas.</li>
+          <li><strong>Concentração:</strong> Desenvolve foco mental e controle da respiração.</li>
+          <li><strong>Redução do estresse:</strong> A prática ao ar livre proporciona bem-estar e relaxamento.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <div class="container-missao">
+        <h2>Curiosidades</h2>
+        <p>✔ O slackline já foi praticado entre balões de ar quente!<br />
+           ✔ A fita pode ter até 100 metros em modalidades extremas.<br />
+           ✔ Existe campeonato mundial de trickline com juízes, pontuação e manobras obrigatórias.<br />
+           ✔ Algumas práticas incluem yoga sobre a fita: o "yogaline".</p>
+      </div>
+    </section>
+
+  </div>
+  </main>
+
+   <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

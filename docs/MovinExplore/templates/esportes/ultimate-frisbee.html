@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tudo sobre Ultimate Frisbee</title>
+
+  <style>
+    /* ================== Reset e Estilo Global ================== */
+    body {
+      background-color: #1a1a1a;
+      color: #ddd;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+        animation: fadePage 1s ease-in-out;
+    }
+
+    @keyframes fadePage {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(242, 108, 24, 0.3);
+      border: 1px solid #333;
+    }
+
+    /* ================== Tipografia ================== */
+    h1, h2 {
+      color: #f26c18;
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 40px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ================== Botões ================== */
+    .botao-voltar {
+      background: linear-gradient(90deg, #f26c18, #d65400);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(242, 108, 24, 0.7);
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      position: absolute;
+      left: 30px;
+      top: 25px;
+    }
+
+    .botao-voltar:hover {
+      background: linear-gradient(90deg, #d65400, #f26c18);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(242, 108, 24, 0.9);
+    }
+
+    /* ================== Header ================== */
+    header {
+      background-color: #000000;
+      padding: 60px 40px 30px;
+      border-bottom: 1px solid #222;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      color: #f26c18;
+      font-weight: 400;
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ================== Seções ================== */
+    #apresentacao, #historia, #regras, #beneficios, #curiosidades {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      border-radius: 12px;
+      margin: 40px auto;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .apresentacao-box, .container-historia, .container-regras, .container-beneficios, .container-curiosidades {
+      max-width: 900px;
+      background: rgba(34, 34, 34, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 24px rgba(242, 108, 24, 0.15);
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ddd;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .apresentacao-box h2,
+    .container-historia h2,
+    .container-regras h2,
+    .container-beneficios h2,
+    .container-curiosidades h2 {
+      color: #f26c18;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .container-historia h2::after,
+    .container-regras h2::after,
+    .container-beneficios h2::after,
+    .container-curiosidades h2::after {
+      content: "";
+      width: 80px;
+      height: 5px;
+      background: #f26c18;
+      display: block;
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
+    /* ================== Lista benefícios ================== */
+    ul {
+      text-align: left;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    ul li strong {
+      color: #ffffff;
+    }
+
+    /* ================== Rodapé ================== */
+    footer.footer {
+      background-color: #000000;
+      border-top: 1px solid #222;
+      padding: 20px 0;
+      color: #ccc;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    footer.footer a {
+      color: #f26c18;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer.footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ================== Animação ================== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+        <h1>Tudo sobre Ultimate Frisbee</h1>
+  </header>
+
+  <div class="page-wrapper">
+
+    <section id="apresentacao">
+      <div class="apresentacao-box">
+        <h2>O que é Ultimate Frisbee?</h2>
+        <p>Ultimate Frisbee é um esporte coletivo dinâmico que combina corrida, estratégia e lançamento de disco. Disputado em um campo similar ao de futebol, o objetivo é passar o disco para um companheiro na zona de pontuação adversária, sem que o disco toque o chão durante os passes.</p>
+      </div>
+    </section>
+
+    <section id="historia">
+      <div class="container-historia">
+        <h2>História do Ultimate Frisbee</h2>
+        <p>O Ultimate Frisbee foi criado em 1968 nos Estados Unidos, como uma alternativa divertida e inclusiva aos esportes tradicionais. Desde então, cresceu globalmente, tornando-se um esporte oficial com federações nacionais e internacionais, além de campeonatos mundiais reconhecidos.</p>
+      </div>
+    </section>
+
+    <section id="regras">
+      <div class="container-regras">
+        <h2>Regras Básicas</h2>
+        <ul>
+          <li><strong>Times:</strong> Dois times com sete jogadores cada.</li>
+          <li><strong>Objetivo:</strong> Passar o disco para um companheiro dentro da zona de pontuação adversária.</li>
+          <li><strong>Movimento:</strong> Jogadores não podem correr segurando o disco, apenas pivoteiam para passar.</li>
+          <li><strong>Interrupções:</strong> O disco muda de posse quando é interceptado, cai no chão ou sai dos limites.</li>
+          <li><strong>Espírito do jogo:</strong> Respeito e fair play são essenciais, não há árbitros na maioria dos jogos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container-beneficios">
+        <h2>Benefícios do Ultimate Frisbee</h2>
+        <ul>
+          <li><strong>Condicionamento físico:</strong> Exercício aeróbico intenso que melhora resistência e agilidade.</li>
+          <li><strong>Coordenação motora:</strong> Desenvolve lançamentos precisos e reflexos rápidos.</li>
+          <li><strong>Trabalho em equipe:</strong> Fortalece comunicação e estratégias coletivas.</li>
+          <li><strong>Inclusividade:</strong> Esporte aberto para todas as idades e níveis, promovendo integração social.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <div class="container-curiosidades">
+        <h2>Curiosidades</h2>
+        <p>✔ O Ultimate é chamado de "o único esporte onde o espírito do jogo é mais importante que a vitória".<br />
+           ✔ Existem campeonatos mundiais, como o WFDF World Ultimate Championships.<br />
+           ✔ O disco oficial tem 175g e deve ser lançado com precisão para não perder a posse.<br />
+           ✔ O esporte é crescente no Brasil, com ligas universitárias e clubes amadores ativos.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

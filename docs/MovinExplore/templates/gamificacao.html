@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gamificação - Movin Sports</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+    <link rel="icon" href="../static/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="../static/gamificacao.css" />
+  <link rel="stylesheet" href="../static/style.css" />
+</head>
+<body>
+  <header class="topo">
+    <h1>Ranking</h1>
+  </header>
+
+  <main class="conteudo">
+    <section class="ranking-geral">
+      <h2>Ranking Geral</h2>
+      <table>
+        <thead>
+          <tr><th>Posição</th><th>Nome</th><th>Pontos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Ana Costa</td><td>1480</td></tr>
+          <tr><td>2</td><td>Lucas Silva</td><td>1320</td></tr>
+          <tr><td>3</td><td>Mariana Lopes</td><td>1275</td></tr>
+          <tr><td>4</td><td>João Pedro</td><td>1190</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="ranking-esporte">
+      <h2>Ranking por Esporte</h2>
+      <div class="modalidades">
+        <div class="esporte">
+          <h3>Parkour</h3>
+          <ul>
+            <li>1º - Ana Costa (600 pts)</li>
+            <li>2º - João Pedro (520 pts)</li>
+            <li>3º - Carla Dias (480 pts)</li>
+          </ul>
+        </div>
+
+        <div class="esporte">
+          <h3>Slackline</h3>
+          <ul>
+            <li>1º - Lucas Silva (530 pts)</li>
+            <li>2º - Mariana Lopes (500 pts)</li>
+            <li>3º - Ana Costa (480 pts)</li>
+          </ul>
+        </div>
+
+        <div class="esporte">
+          <h3>Ultimate</h3>
+          <ul>
+            <li>1º - Mariana Lopes (775 pts)</li>
+            <li>2º - Lucas Silva (790 pts)</li>
+            <li>3º - Felipe Rocha (710 pts)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="competicao">
+      <h2>Competição da Semana</h2>
+      <p>🏆 <strong>Desafio Parkour Urbano!</strong></p>
+      <p>Complete 3 obstáculos em 2 minutos e ganhe <strong>+150 pontos</strong>.</p>
+      <p>📍 Local: Praça Central</p>
+      <p>🕒 Data: 06 de Julho - 15h</p>
+      <p id="contador"></p>
+      <button id="btn-inscrever" class="botao-animado">Inscrever-se</button>
+      <p id="mensagem-confirmacao" class="mensagem-confirmacao"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Contador regressivo para 6 de julho, 15h
+    const contadorEl = document.getElementById('contador');
+    const dataCompeticao = new Date('2025-07-06T15:00:00');
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = dataCompeticao - agora;
+
+      if (diff <= 0) {
+        contadorEl.textContent = '⏰ A competição já começou! Boa sorte!';
+        clearInterval(intervaloContador);
+        return;
+      }
+
+      const horas = Math.floor(diff / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+      contadorEl.textContent = `⏳ Começa em: ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    const intervaloContador = setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    // Botão Inscrever-se com confirmação e redirecionamento
+    const btnInscrever = document.getElementById('btn-inscrever');
+    const mensagemConf = document.getElementById('mensagem-confirmacao');
+
+    btnInscrever.addEventListener('click', () => {
+      const confirmar = confirm('Você quer se inscrever para o Desafio Parkour Urbano?');
+      if (confirmar) {
+        mensagemConf.textContent = '🎉 Inscrição realizada com sucesso! Preparado para o desafio?';
+        setTimeout(() => {
+          window.location.href = 'eventos/aba eventos/index.html';
+        }, 2000);
+      } else {
+        mensagemConf.textContent = 'Você cancelou a inscrição.';
+      }
+    });
+  </script>
+</body>
+</html>

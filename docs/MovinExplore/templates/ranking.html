@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranking Completo de Esportes - Movin Explore</title>
+  <link rel="stylesheet" href="../static/ranking.css" />
+   <link rel="stylesheet" href="../static/style.css" />
+  <link rel="icon" href="../static/favicon.png" type="image/png" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Esportes Mais Populares</h1>
+      <nav class="menu-ranking">
+    </div>
+  </header>
+  
+
+  <main class="page-wrapper">
+    <section id="ranking" class="ranking-section">
+      <h2>Top 10 Esportes para Você Experimentar</h2>
+      <p>Confira os esportes pouco divulgados que mais conquistaram nossos usuários. Cada um com seus benefícios e desafios únicos!</p>
+
+      <ol id="ranking-lista" class="ranking-lista">
+        <!-- Conteúdo será preenchido via JavaScript -->
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const esportesRanking = [
+      {
+        nome: "Slackline",
+        descricao: "Esporte que desenvolve equilíbrio e concentração ao andar sobre uma fita tensionada.",
+        beneficios: "Melhora o equilíbrio, força do core e concentração.",
+        equipamentos: "Fita slackline, ancoragens resistentes.",
+        dificuldade: "Média"
+      },
+      {
+        nome: "Ultimate Frisbee",
+        descricao: "Esporte coletivo ágil, onde se passa um disco para marcar pontos.",
+        beneficios: "Aumenta resistência cardiovascular, coordenação e trabalho em equipe.",
+        equipamentos: "Disco frisbee, campo aberto.",
+        dificuldade: "Média"
+      },
+      {
+        nome: "Escalada Indoor",
+        descricao: "Prática de escalada em paredes artificiais que simulam rochas.",
+        beneficios: "Desenvolve força, agilidade e resolução de problemas.",
+        equipamentos: "Sapatos de escalada, arnês, parede de escalada.",
+        dificuldade: "Alta"
+      },
+      {
+        nome: "Bocha Paralímpica",
+        descricao: "Versão adaptada da bocha para pessoas com mobilidade reduzida.",
+        beneficios: "Estimula estratégia, precisão e socialização.",
+        equipamentos: "Bolas de bocha, quadra adaptada.",
+        dificuldade: "Baixa"
+      },
+      {
+        nome: "Canoagem",
+        descricao: "Atividade aquática que requer o uso de um caiaque ou canoa para remar.",
+        beneficios: "Melhora força muscular, resistência e conexão com a natureza.",
+        equipamentos: "Canoa/caiaque, remo, colete salva-vidas.",
+        dificuldade: "Média"
+      },
+      {
+        nome: "Parkour",
+        descricao: "Arte do deslocamento rápido e fluido, superando obstáculos urbanos.",
+        beneficios: "Aumenta força, agilidade e autoconfiança.",
+        equipamentos: "Roupas confortáveis e tênis adequados.",
+        dificuldade: "Alta"
+      },
+      {
+        nome: "Kitesurf",
+        descricao: "Esporte aquático que usa uma pipa para propulsão sobre a água.",
+        beneficios: "Desenvolve equilíbrio, força e resistência.",
+        equipamentos: "Kite, prancha, arnês, local com vento constante.",
+        dificuldade: "Alta"
+      },
+      {
+        nome: "Escalada em Árvores",
+        descricao: "Escalar árvores com equipamentos de segurança para lazer e esporte.",
+        beneficios: "Melhora coordenação, força e contato com a natureza.",
+        equipamentos: "Corda, arnês, mosquetões, capacete.",
+        dificuldade: "Média"
+      },
+      {
+        nome: "Frescobol",
+        descricao: "Esporte de praia com raquetes pequenas e bola, para dois jogadores.",
+        beneficios: "Melhora reflexos, coordenação e condicionamento físico.",
+        equipamentos: "Raquetes e bola específica.",
+        dificuldade: "Baixa"
+      },
+      {
+        nome: "Rugby de Areia",
+        descricao: "Variante do rugby praticada na praia com equipes menores.",
+        beneficios: "Desenvolve força, resistência e trabalho em equipe.",
+        equipamentos: "Bola de rugby, espaço na areia.",
+        dificuldade: "Média"
+      }
+    ];
+
+    const lista = document.getElementById("ranking-lista");
+
+    esportesRanking.forEach((esporte, index) => {
+      const item = document.createElement("li");
+      item.classList.add("ranking-item");
+
+      item.innerHTML = `
+        <div class="ranking-header">
+          <span class="posicao">${index + 1}º Lugar</span>
+          <h3 class="nome-esporte">${esporte.nome}</h3>
+        </div>
+        <p class="descricao">${esporte.descricao}</p>
+        <ul class="info-adicional">
+          <li><strong>Benefícios:</strong> ${esporte.beneficios}</li>
+          <li><strong>Equipamentos:</strong> ${esporte.equipamentos}</li>
+          <li><strong>Nível de dificuldade:</strong> ${esporte.dificuldade}</li>
+        </ul>
+      `;
+
+      lista.appendChild(item);
+    });
+  </script>
+</body>
+</html>

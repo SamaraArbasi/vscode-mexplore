@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eventos</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../static/favicon.png" type="image/png" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    /* Seus estilos */
+    #map-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    #map-controls button {
+      background-color: #F26925;
+      border: none;
+      border-radius: 4px;
+      color: #000;
+      font-size: 24px;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(242, 105, 37, 0.8);
+      transition: background-color 0.3s ease;
+    }
+
+    #map-controls button:hover {
+      background-color: #FFC530;
+    }
+
+    #map {
+      height: 360px;
+      width: 100%;
+    }
+
+    .no-events.hidden {
+      display: none;
+    }
+
+    nav ul.dropdown-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 70px;
+      background-color: #000;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      min-width: 100px;
+      z-index: 100;
+    }
+
+    nav ul.dropdown-menu li a {
+      color: #F26925;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 16px;
+      display: block;
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+    }
+
+    nav ul.dropdown-menu li a:hover {
+      background-color: #F26925;
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .logo-menu-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .logo-menu-container:hover nav ul.dropdown-menu {
+      display: block;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000000;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      height: 90px;
+      user-select: none;
+      display: block;
+    }
+
+    .header-title {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #F26925;
+      flex-shrink: 0;
+    }
+
+    #btn-adicionar-evento {
+      margin: 15px 0;
+      background-color: #F26925;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 20px;
+      color: black;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(242, 105, 37, 0.8);
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 200px;
+    }
+
+    #btn-adicionar-evento:hover {
+      background-color: #FFC530;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 8px;
+      color: #fff;
+      width: 320px;
+      box-shadow: 0 0 15px #F26925;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: #F26925;
+    }
+
+    .modal-content label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+
+    .modal-content input[type="text"],
+    .modal-content select,
+    .modal-content input[type="datetime-local"],
+    .modal-content input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .modal-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .modal-buttons button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-buttons .cancel-btn {
+      background-color: #666;
+      color: #fff;
+    }
+
+    .modal-buttons .cancel-btn:hover {
+      background-color: #444;
+    }
+
+    .modal-buttons .confirm-btn {
+      background-color: #F26925;
+      color: black;
+    }
+
+    .modal-buttons .confirm-btn:hover {
+      background-color: #FFC530;
+    }
+
+    #modal-search-results {
+      list-style: none;
+      margin-top: 8px;
+      padding: 0;
+      background: #000000;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    #modal-search-results li {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #modal-search-results li:hover {
+      background-color: #f26925;
+    }
+
+    .event.card {
+      border: 1px solid #F26925;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      background-color: #111;
+      color: #F26925;
+    }
+
+    .event.card button.enter-button {
+      background-color: #F26925;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      color: black;
+      margin-top: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .event.card button.enter-button:hover {
+      background-color: #FFC530;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container centralizado fade-in-top">
+      <h1 class="header-title">EVENTOS</h1>
+    </div>
+  </header>
+
+  <main class="container fade-in">
+    <section class="map-section" style="position:relative;">
+      <div id="map"></div>
+      <button id="btn-adicionar-evento" type="button">ADICIONAR EVENTOS</button>
+      <div id="map-controls">
+        <button id="zoom-in" aria-label="Zoom In">+</button>
+        <button id="zoom-out" aria-label="Zoom Out">−</button>
+      </div>
+    </section>
+
+    <section class="event-section">
+      <h2>ENTRAR EM EVENTO</h2>
+      <div class="filter-section">
+        <select id="filtro-esporte">
+           <option value="">Todos os Esportes</option>
+          <option value="Slackline">Slackline</option>
+          <option value="Ultimate Frisbee">Ultimate Frisbee</option>
+          <option value="Escalada Indoor">Escalada Indoor</option>
+          <option value="Bocha Paralímpica">Bocha Paralímpica</option>
+          <option value="Canoagem">Canoagem</option>
+          <option value="Parkour">Parkour</option>
+          <option value="Kitesurf">Kitesurf</option>
+          <option value="Escalada em Árvores">Escalada em Árvores</option>
+          <option value="Frescobol">Frescobol</option>
+          <option value="Rugby de Areia">Rugby de Areia</option>
+        </select>
+        <input type="date" id="filtro-data">
+
+        <select id="filtro-distancia">
+          <option value="">Todas as Distâncias</option>
+          <option value="2">Até 2 km</option>
+          <option value="5">Até 5 km</option>
+          <option value="10">Até 10 km</option>
+          <option value="20">Até 20 km</option>
+        </select>
+
+        <button onclick="filtrarEventos()" class="filter-button">Filtrar</button>
+      </div>
+
+      <div id="lista-eventos" class="event-carousel">
+        <div class="events-wrapper" id="events-wrapper">
+          <article class="event card" data-esporte="Parkour" data-data="2025-06-15" data-lat="-22.9259" data-lng="-43.2311" data-limite="10" data-inscritos="0">
+            <h3 class="event-title">Parkour</h3>
+            <p class="event-location">Tijuca</p>
+            <time class="event-date">2025-06-15</time>
+            <button class="enter-button">ENTRAR</button>
+          </article>
+          <article class="event card" data-esporte="Frescobol" data-data="2025-06-13" data-lat="-22.8996" data-lng="-43.2253" data-limite="15" data-inscritos="0">
+            <h3 class="event-title">Frescobol</h3>
+            <p class="event-location">Quinta da Boa Vista</p>
+            <time class="event-date">2025-06-13</time>
+            <button class="enter-button">ENTRAR</button>
+          </article>
+          <article class="event card" data-esporte="Rugby" data-data="2025-06-16" data-lat="-22.9655" data-lng="-43.1729" data-limite="20" data-inscritos="0">
+            <h3 class="event-title">Rugby</h3>
+            <p class="event-location">Praia do Leme</p>
+            <time class="event-date">2025-06-16</time>
+            <button class="enter-button">ENTRAR</button>
+          </article>
+        </div>
+      </div>
+
+      <div class="no-events hidden">Nenhum evento encontrado.</div>
+    </section>
+  </main>
+
+  <!-- Modal adicionar evento -->
+  <div id="modal-adicionar" class="modal">
+    <div class="modal-content">
+      <h3>Adicionar Evento</h3>
+      <label for="input-local">Local:</label>
+      <input type="text" id="input-local" placeholder="Ex: Copacabana" autocomplete="off" />
+      <ul id="modal-search-results"></ul>
+
+      <label for="input-esporte">Esporte:</label>
+      <select id="input-esporte" required>
+        <option value="" disabled selected>Escolha o esporte</option>
+         option value="Slackline">Slackline</option>
+          <option value="Ultimate Frisbee">Ultimate Frisbee</option>
+          <option value="Escalada Indoor">Escalada Indoor</option>
+          <option value="Bocha Paralímpica">Bocha Paralímpica</option>
+          <option value="Canoagem">Canoagem</option>
+          <option value="Parkour">Parkour</option>
+          <option value="Kitesurf">Kitesurf</option>
+          <option value="Escalada em Árvores">Escalada em Árvores</option>
+          <option value="Frescobol">Frescobol</option>
+          <option value="Rugby de Areia">Rugby de Areia</option>
+      </select>
+
+      <label for="input-horario">Horário:</label>
+      <input type="datetime-local" id="input-horario" required />
+      <label for="input-limite">Limite de Pessoas:</label>
+      <input type="number" id="input-limite" min="1" required />
+
+      <div class="modal-buttons">
+        <button class="cancel-btn" type="button" id="btn-cancelar">Cancelar</button>
+        <button class="confirm-btn" type="button" id="btn-confirmar">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    let map, marker, userLocation = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      map = L.map('map').setView([-23.55052, -46.633308], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      marker = L.marker([-23.55052, -46.633308]).addTo(map);
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          userLocation = [pos.coords.latitude, pos.coords.longitude];
+          map.setView(userLocation, 14);
+          marker.setLatLng(userLocation).bindPopup('Você está aqui').openPopup();
+        });
+      }
+
+      document.getElementById('zoom-in').addEventListener('click', () => map.zoomIn());
+      document.getElementById('zoom-out').addEventListener('click', () => map.zoomOut());
+
+      document.getElementById('btn-adicionar-evento').addEventListener('click', abrirModal);
+      document.getElementById('btn-cancelar').addEventListener('click', fecharModal);
+      document.getElementById('btn-confirmar').addEventListener('click', confirmarEvento);
+
+      document.getElementById('input-local').addEventListener('input', buscarLocalModal);
+
+      attachEnterEventListeners();
+    });
+
+    function buscarLocalModal(e) {
+      const termo = e.target.value;
+      const lista = document.getElementById('modal-search-results');
+      lista.innerHTML = '';
+
+      if (termo.length < 3) return;
+
+      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(termo)}&format=json&addressdetails=1&limit=5`)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(loc => {
+            const li = document.createElement('li');
+            li.textContent = loc.display_name;
+            li.addEventListener('click', () => {
+              document.getElementById('input-local').value = loc.display_name;
+              window.geocodedLocation = [parseFloat(loc.lat), parseFloat(loc.lon)];
+              lista.innerHTML = '';
+            });
+            lista.appendChild(li);
+          });
+        })
+        .catch(err => console.error('Erro no geocoding:', err));
+    }
+
+    function abrirModal() {
+      document.getElementById('modal-adicionar').style.display = 'flex';
+    }
+
+    function fecharModal() {
+      document.getElementById('modal-adicionar').style.display = 'none';
+      document.getElementById('input-local').value = '';
+      document.getElementById('input-esporte').value = '';
+      document.getElementById('input-horario').value = '';
+      document.getElementById('input-limite').value = '';
+      document.getElementById('modal-search-results').innerHTML = '';
+      window.geocodedLocation = null;
+    }
+
+    function confirmarEvento() {
+      const local = document.getElementById('input-local').value.trim();
+      const esporte = document.getElementById('input-esporte').value;
+      const horario = document.getElementById('input-horario').value;
+      const limiteStr = document.getElementById('input-limite').value;
+
+      if (!local || !esporte || !horario || !limiteStr) {
+        alert('Preencha todos os campos!');
+        return;
+      }
+
+      const limite = parseInt(limiteStr);
+      if (isNaN(limite) || limite < 1) {
+        alert('Informe um limite válido maior que zero.');
+        return;
+      }
+
+      if (!window.geocodedLocation) {
+        alert('Selecione um local da lista de sugestões.');
+        return;
+      }
+
+      const dataISO = horario.slice(0,10);
+      const container = document.getElementById('events-wrapper');
+
+      const [lat, lng] = window.geocodedLocation;
+
+      // Cria o elemento do evento
+      const article = document.createElement('article');
+      article.className = 'event card';
+      article.dataset.esporte = esporte;
+      article.dataset.data = dataISO;
+      article.dataset.lat = lat;
+      article.dataset.lng = lng;
+      article.dataset.limite = limite;
+      article.dataset.inscritos = 0;
+
+      article.innerHTML = `
+        <h3 class="event-title">${esporte}</h3>
+        <p class="event-location">${local}</p>
+        <time class="event-date">${dataISO}</time>
+        <button class="enter-button">ENTRAR</button>
+      `;
+
+      container.appendChild(article);
+      fecharModal();
+      attachEnterEventListeners();
+    }
+
+    function attachEnterEventListeners() {
+      document.querySelectorAll('.enter-button').forEach(btn => {
+        btn.onclick = function() {
+          const card = this.closest('.event');
+          const lat = parseFloat(card.dataset.lat);
+          const lng = parseFloat(card.dataset.lng);
+          const limite = parseInt(card.dataset.limite);
+          let inscritos = parseInt(card.dataset.inscritos);
+
+          const usuario = localStorage.getItem("usuarioLogado");
+          if (!usuario) {
+            alert("Você precisa estar logado para entrar no evento.");
+            window.location.href = "cadastro_login/login.html";
+            return;
+          }
+
+          if (inscritos >= limite) {
+            alert("Este evento atingiu o limite de participantes.");
+            return;
+          }
+
+          // Verifica se o usuário já está inscrito (armazenamento local simples)
+          let inscritosUsuarios = JSON.parse(localStorage.getItem(`inscritos_${card.dataset.esporte}_${card.dataset.data}`)) || [];
+
+          if (inscritosUsuarios.includes(usuario)) {
+            alert("Você já está inscrito neste evento.");
+            return;
+          }
+
+          inscritosUsuarios.push(usuario);
+          localStorage.setItem(`inscritos_${card.dataset.esporte}_${card.dataset.data}`, JSON.stringify(inscritosUsuarios));
+
+          inscritos++;
+          card.dataset.inscritos = inscritos;
+
+          alert("Inscrição realizada com sucesso!");
+
+          // Centraliza no evento no mapa
+          map.setView([lat, lng], 15);
+          marker.setLatLng([lat, lng]).bindPopup(card.querySelector('.event-title').textContent).openPopup();
+        };
+      });
+    }
+
+    function filtrarEventos() {
+      const esporte = document.getElementById('filtro-esporte').value;
+      const data = document.getElementById('filtro-data').value;
+      const distanciaStr = document.getElementById('filtro-distancia').value;
+      const distancia = distanciaStr ? parseFloat(distanciaStr) : null;
+      const cards = document.querySelectorAll('.event.card');
+      let algumVisivel = false;
+
+      cards.forEach(card => {
+        const matchEsporte = !esporte || card.dataset.esporte === esporte;
+        const matchData = !data || card.dataset.data === data;
+        let matchDistancia = true;
+
+        if (distancia && userLocation) {
+          const lat = parseFloat(card.dataset.lat);
+          const lng = parseFloat(card.dataset.lng);
+          const d = getDistance(userLocation[0], userLocation[1], lat, lng);
+          matchDistancia = d <= distancia;
+        }
+
+        const mostrar = matchEsporte && matchData && matchDistancia;
+        card.style.display = mostrar ? 'block' : 'none';
+        if (mostrar) algumVisivel = true;
+      });
+
+      document.querySelector('.no-events').classList.toggle('hidden', algumVisivel);
+    }
+
+    function getDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // km
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+    }
+
+  </script>
+
+</body>
+</html>
