@@ -1,0 +1,156 @@
+body {
+  background: #121212;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+    animation: fadePage 1s ease-in-out;
+}
+
+@keyframes fadePage {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.topo {
+  text-align: center;
+  padding: 40px 20px;
+  background: #000;
+  border-bottom: 1px solid #222;
+}
+
+.topo h1 {
+  color: #f26c18;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.topo p {
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  background: #111;
+  padding: 12px 0;
+  gap: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.menu a {
+  color: #f26c18;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+.conteudo {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #f26c18;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #f26c18aa;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(242, 108, 24, 0.1);
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background: #1f1f1f;
+  color: #f26c18;
+}
+
+td {
+  color: #ddd;
+}
+
+.modalidades {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.esporte {
+  flex: 1 1 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(242, 108, 24, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.esporte h3 {
+  color: #f26c18;
+  margin-bottom: 12px;
+}
+
+.esporte ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.esporte li {
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.competicao {
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(242, 108, 24, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.competicao p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.competicao button {
+  background: #f26c18;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(242, 108, 24, 0.4);
+  transition: background 0.3s ease;
+}
+
+.competicao button:hover {
+  background: #ff7a2b;
+}
+
