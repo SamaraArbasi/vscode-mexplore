@@ -1,0 +1,346 @@
+/* ———————— GERAL ———————— */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arvo", serif;
+  background: linear-gradient(to bottom right, #000000, #25272b, #1a1a1a);
+  color: #fff;
+  animation: fadePage 1s ease-in-out;
+}
+
+@keyframes fadePage {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+  color: #f26925;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ———————— LOGIN / CADASTRO ———————— */
+.central-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.central-page .container {
+  background-color: #121212;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(242, 105, 37, 0.25);
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #f79400;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(242, 105, 37, 0.4);
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 10px #f26925;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+.input-group i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f26925;
+}
+.input-group input {
+  padding-left: 35px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f26925;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(242, 105, 37, 0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffc530;
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: #ff6666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.botao-login {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.botao-login a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #000;
+  background-color: #f26925;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.botao-login a:hover {
+  background-color: #ffc530;
+}
+
+/* ———————— PÁGINA COM SCROLL (pqpratica) ———————— */
+.scroll-page {
+  align-items: flex-start;
+  padding-top: 40px;
+  height: auto;
+}
+
+.scroll-page .container.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scroll-page .container.grid-layout h1 {
+  grid-column: span 2;
+  text-align: center;
+  font-size: 32px;
+  color: #f26c18;
+  margin-bottom: 30px;
+}
+
+.section {
+  background-color: #000;
+  border-left: 6px solid #f26925;
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 12px rgba(242, 105, 37, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(255, 197, 48, 0.6);
+}
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffc530;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.section-title::before {
+  content: "🔥";
+}
+.scroll-page ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #ccc;
+}
+.scroll-page ul li {
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* ———————— FORMULÁRIO DE CADASTRO ———————— */
+.form-page {
+  padding-top: 40px;
+  height: auto;
+}
+
+.form-page .container {
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* ———————— LAYOUT PARA EVENTOS ———————— */
+body:not(.form-page):not(.scroll-page) .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  min-height: 600px;
+}
+
+.map-section,
+.event-section {
+  flex: 1 1 300px;
+  background-color: #000;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+#map {
+  width: 100%;
+  height: 380px;
+  border-radius: 10px;
+  background-image: linear-gradient(145deg, #191919 0%, #0d0d0d 100%);
+  animation: floatMap 6s ease-in-out infinite;
+}
+@keyframes floatMap {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 768px) {
+  body:not(.form-page):not(.scroll-page) .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .map-section, .event-section {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.filter-section input[type="date"],
+.filter-section select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(242, 105, 37, 0.4);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.filter-section input[type="date"]:focus,
+.filter-section select:focus {
+  outline: none;
+  background-color: #111;
+  box-shadow: 0 0 8px #f26925;
+}
+
+/* Filtros alinhados e com espaçamento consistente */
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.filter-section > * {
+  flex: 1 1 140px;
+  min-width: 140px;
+}
+
+/* Garante que o botão não fique perdido na direita */
+.filter-section button {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Espaçamento entre filtros e lista de eventos */
+.event-section h2 {
+  margin-bottom: 1.2rem;
+}
+
+.event-carousel {
+  flex: 1;
+  padding-right: 0.5rem;
+  overflow: hidden;
+  max-height: 400px;
+  position: relative;
+}
+
+.event-carousel {
+  overflow: hidden;
+  max-height: 400px;
+  position: relative;
+}
+
+.events-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: scrollUp 25s linear infinite;
+  pointer-events: auto; /* ✅ força o ponteiro funcionar */
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.scroll-page .container.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.scroll-page .container.grid-layout h1 {
+  grid-column: span 2;
+  text-align: center;
+  font-size: 32px;
+  color: #f26c18;
+  margin-bottom: 30px;
+}

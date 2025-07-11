@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOVIN EXPLORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/style.css" />
+  <link rel="icon" href="../static/favicon.png" type="image/png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.4/tsparticles.bundle.min.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-dropdown">
+        <img src="Logo.png" alt="Logo" class="logo-img" onclick="toggleDropdown()" />
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="usuario.html">Área do Usuário</a>
+          <a href="ranking.html">Esportes</a>
+          <a href="gamificacao.html">Ranking</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="noticias.html">Notícias</a>
+          <a href="eventos/aba eventos/eventos.html">Eventos</a>
+        </div>
+      </div>
+      <div class="texto-header">
+        <h1>Explore o Inexplorado</h1>
+        <h2>MovinExplore</h2>
+      </div>
+    </div>
+  </header>
+
+  <section id="apresentacao">
+    <div class="apresentacao-container">
+      <h1><span class="typewriter">Bem-vindo ao MovinExplore</span></h1>
+      <p>Onde a paixão pelo movimento encontra esportes fora do radar.</p>
+      <a href="cadastro_login/cadastro.html" class="botao-apresentacao"><strong>Explorar</strong></a>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Descubra esportes incríveis e pouco divulgados</h1>
+      <p>Explore, conecte-se e viva novas experiências.</p>
+      <div class="botao-sobre">
+        <button onclick="window.location.href='sobre.html'">Sobre Nós</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Destaques -->
+  <section class="esportes-destaque">
+    <h2>Esportes em Ascensão</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+      
+      <div class="cards-container">
+        <div class="card">
+          <img src="Slackline.jpeg" alt="Slackline">
+          <h3>Slackline <i class="fas fa-wave-square fa-2x" style="color:#f26c18;"></i></h3>
+          <p>Equilíbrio e concentração em cordas esticadas.</p>
+        </div>
+        <div class="card">
+          <img src="UltimateFrisbee.png" alt="Ultimate Frisbee">
+          <h3>Ultimate Frisbee  <i class="fas fa-futbol fa-2x" style="color:#267ac9;"></i></h3>
+          <p>Esporte coletivo com disco voador e espírito de equipe.</p>
+        </div>
+        <div class="card">
+          <img src="Parkour.png" alt="Parkour">
+          <h3>Parkour <i class="fas fa-running fa-2x" style="color:#ea5083;"></i></h3>
+          <p>Desafie seus limites com movimentos urbanos.</p>
+        </div>
+      </div>
+      
+      <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <a href="#" class="btn saiba-mais" id="btn-saiba-mais" target="_blank" rel="noopener noreferrer">Saiba Mais</a>
+
+  </section>
+
+  <!-- Seção de Histórias / Entrevistas -->
+  <section id="historias-praticantes">
+    <h2>Histórias dos Praticantes</h2>
+    <div class="depoimentos-container">
+      <div class="depoimento-card" onclick="abrirDepoimento('José Silva', 'O MovinExplore foi fundamental para eu descobrir o slackline. Antes, eu nunca tinha ouvido falar desse esporte, mas aqui encontrei conteúdos, dicas e uma comunidade que me apoiou desde o começo. Hoje, me sinto mais equilibrado, tanto no esporte quanto na vida!')">
+        <div class="avatar-container">
+          <img class="avatar" src="pessoa1.png" alt="José Silva" />
+        </div>
+        <p>José Silva</p>
+      </div>
+      <div class="depoimento-card" onclick="abrirDepoimento('Maria Oliveira', 'Eu sempre quis praticar um esporte diferente, e graças ao MovinExplore, conheci o ultimate frisbee. Foi uma experiência incrível, fiz novas amizades e aprendi a trabalhar em equipe de um jeito divertido. O site me motivou a sair da rotina e experimentar algo novo')">
+        <div class="avatar-container">
+          <img class="avatar" src="pessoa2.png" alt="Maria Oliveira" />
+        </div>
+        <p>Maria Oliveira</p>
+      </div>
+      <div class="depoimento-card" onclick="abrirDepoimento('Giovana Souza', 'O parkour parecia algo distante e até perigoso, mas com as histórias e dicas do MovinExplore, ganhei coragem para começar. Cada treino é um desafio que me faz crescer, tanto fisicamente quanto mentalmente. A plataforma me inspirou a superar meus limites.')">
+        <div class="avatar-container">
+          <img class="avatar" src="pessoa3.png" alt="Giovana Souza" />
+        </div>
+        <p>Giovana Souza</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal-depoimento" class="modal">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharDepoimento()">&times;</span>
+      <h3 id="modal-nome"></h3>
+      <p id="modal-texto"></p>
+    </div>
+  </div>
+
+  <!-- Seção de Benefícios -->
+  <section id="por-que-explorar" class="secao-beneficios">
+    <h2>Por Que Explorar Novos Esportes?</h2>
+    <div class="beneficios-container">
+      <div class="beneficio-card">
+        <div class="icone">🏃‍♂️</div>
+        <h3><strong>Melhora da Saúde</strong></h3>
+        <p>Atividades físicas variadas ajudam seu corpo a ficar mais forte e saudável.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icone">🧠</div>
+        <h3><strong>Desenvolvimento Mental</strong></h3>
+        <p>Novos esportes desafiam sua mente e melhoram a concentração e disciplina.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icone">🤝</div>
+        <h3><strong>Novas Amizades</strong></h3>
+        <p>Conheça pessoas com interesses parecidos e expanda seu círculo social.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icone">🎉</div>
+        <h3><strong>Diversão Garantida</strong></h3>
+        <p>Experimente emoções novas e se divirta aprendendo algo diferente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Como Funciona -->
+  <section class="como-funciona" aria-label="Como Funciona">
+    <h2>Como Funciona</h2>
+    <div class="steps-flow" role="list">
+      <div class="step" role="listitem" tabindex="0" aria-label="Passo 1: Descubra esportes que combinam com você">
+        <div class="icon" aria-hidden="true">🔎</div>
+        <p><strong>Descubra</strong> Esportes que combinam com você</p>
+      </div>
+
+      <div class="arrow" aria-hidden="true">→</div>
+
+      <div class="step" role="listitem" tabindex="0" aria-label="Passo 2: Conheça histórias e dicas reais">
+        <div class="icon" aria-hidden="true">📚</div>
+        <p><strong>Conheça</strong> Histórias e dicas reais</p>
+      </div>
+
+      <div class="arrow" aria-hidden="true">→</div>
+
+      <div class="step" role="listitem" tabindex="0" aria-label="Passo 3: Conecte-se e comece sua jornada">
+        <div class="icon" aria-hidden="true">👥</div>
+        <p><strong>Conecte-se</strong> Compartilhe e comece sua jornada</p>
+      </div>
+
+      <div class="arrow" aria-hidden="true">→</div>
+
+      <div class="step" role="listitem" tabindex="0" aria-label="Passo 4: Explore o ranking">
+        <div class="icon" aria-hidden="true">🏆</div>
+        <p><strong>Explore</strong> Acompanhe seu progresso e conquiste seu lugar no ranking</p>
+      </div>
+    </div>
+
+    <button onclick="toggleOpcoes()" aria-label="Quer saber mais?">Curiosidades</button>
+  </section>
+
+  <!-- Elemento oculto ativado por botão -->
+  <div id="sobre-nos" style="display: none;">
+    <p>Acesse nossa página "Sobre" e mergulhe na missão do MovinExplore.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleOpcoes() {
+      const sobre = document.getElementById('sobre-nos');
+      sobre.style.display = (sobre.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    window.addEventListener('click', function (e) {
+      const menu = document.getElementById('dropdown-menu');
+      const logo = document.querySelector('.logo-img');
+      if (!logo.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cardsContainer = document.querySelector(".cards-container");
+      const cards = document.querySelectorAll(".card");
+      const prevBtn = document.querySelector(".carousel-btn.prev");
+      const nextBtn = document.querySelector(".carousel-btn.next");
+      const btnSaibaMais = document.getElementById("btn-saiba-mais");
+
+      let currentIndex = 0;
+
+      // URLs ou páginas para cada esporte
+      const linksSaibaMais = [
+        "esportes/slackline.html",
+        "esportes/ultimate-frisbee.html",
+        "esportes/parkour.html"
+      ];
+
+      function showCard(index) {
+        const width = cards[0].offsetWidth + 20; // largura do card + gap
+        cardsContainer.scrollTo({
+          left: width * index,
+          behavior: "smooth",
+        });
+
+        cards.forEach((card, i) => {
+          if (i === index) card.classList.add("visible");
+          else card.classList.remove("visible");
+        });
+
+        // Atualiza o href do botão Saiba Mais
+        btnSaibaMais.href = linksSaibaMais[index];
+      }
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex = currentIndex === 0 ? cards.length - 1 : currentIndex - 1;
+        showCard(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = currentIndex === cards.length - 1 ? 0 : currentIndex + 1;
+        showCard(currentIndex);
+      });
+
+      // Inicializa com o primeiro card visível
+      showCard(currentIndex);
+    });
+
+    function abrirDepoimento(nome, texto) {
+      document.getElementById("modal-nome").innerText = nome;
+      document.getElementById("modal-texto").innerText = texto;
+      document.getElementById("modal-depoimento").style.display = "block";
+    }
+
+    function fecharDepoimento() {
+      document.getElementById("modal-depoimento").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

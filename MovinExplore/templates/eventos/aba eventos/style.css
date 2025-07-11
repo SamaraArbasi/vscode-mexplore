@@ -1,0 +1,338 @@
+/* ————————————————————— GLOBAL ————————————————————— */
+
+body {
+  margin: 0;
+  padding: 0 1rem;
+  font-family: "Arvo";
+  font-size: 16px;
+  background: linear-gradient(to bottom right, #000000, #25272b, #1a1a1a);
+  color: #fff;
+  animation: fadePage 1s ease-in-out;
+}
+
+@keyframes fadePage {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ————————————————————— HEADER ————————————————————— */
+
+header {
+  background-color: #000000;
+  padding: 20px 40px;
+  border-bottom: 1px solid #222;
+  text-align: center;
+}
+
+header h1 {
+  color: #f26c18;
+  font-weight: 400;
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 0.1em;
+}
+
+.texto-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.texto-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-family: "Arvo";
+  color: #f26c18;
+}
+
+.header-title {
+  color: #f04400;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+/* ————————————————————— NAV & DROPDOWN ————————————————————— */
+
+nav {
+  position: relative;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #f26925;
+  transition: width 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #f26925;
+  transition: width 0.3s ease;
+}
+
+.logo-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.logo {
+  width: 150px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #f26925;
+  transition: box-shadow 0.3s ease;
+}
+
+.logo-dropdown:hover .logo {
+  box-shadow: 0 0 40px #f26925;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #121212;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(242, 105, 37, 0.8);
+  padding: 0.5rem 0;
+  min-width: 180px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.logo-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0.8rem 1.5rem;
+}
+
+.dropdown-menu li + li {
+  border-top: 1px solid #000;
+}
+
+.dropdown-menu a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  color: #f26925;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+/* ————————————————————— MAIN CONTENT ————————————————————— */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+  min-height: 600px;
+}
+
+.map-section,
+.event-section {
+  flex: 1 1 300px;
+  background-color: #000;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+#map {
+  width: 100%;
+  height: 380px;
+  border-radius: 10px;
+  background: #121212;
+  background-image: linear-gradient(145deg, #191919 0%, #0d0d0d 100%);
+  animation: floatMap 6s ease-in-out infinite;
+}
+
+@keyframes floatMap {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ————————————————————— FILTROS & BOTÃO ————————————————————— */
+
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.filter-section > * {
+  flex: 1 1 140px;
+  min-width: 140px;
+}
+
+.filter-section button {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.filter-section select,
+.filter-section input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.filter-section select:focus,
+.filter-section input:focus {
+  background-color: #111;
+  color: #fff;
+  box-shadow: 0 0 8px #f26925;
+}
+
+.filter-section button {
+  background-color: #f26925;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-section button:hover {
+  background-color: #f79400;
+}
+
+/* ————————————————————— EVENT CARDS ————————————————————— */
+
+.event-carousel {
+  flex: 1;
+  padding-right: 0.5rem;
+  overflow: hidden;
+}
+
+.events-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: scrollUp 20s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.event {
+  background-color: #000;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(242, 105, 37, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.event:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 12px 30px #f26925;
+}
+
+.event-title {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.event-location {
+  color: #f26925;
+  margin: 0.3rem 0;
+}
+
+.event-date {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ————————————————————— BOTÃO “ENTRAR” ————————————————————— */
+
+.enter-button {
+  background-color: #f26925;
+  color: #000;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(242, 105, 37, 0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.enter-button:hover {
+  background-color: #ffc530;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 197, 48, 0.8);
+}
+
+/* ————————————————————— MENSAGEM “SEM EVENTOS” ————————————————————— */
+
+.no-events {
+  color: #ccc;
+  font-style: italic;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ————————————————————— RESPONSIVIDADE ————————————————————— */
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .map-section,
+  .event-section {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .dropdown-menu {
+    left: 0 !important;
+    transform: none;
+    width: 100%;
+  }
+}

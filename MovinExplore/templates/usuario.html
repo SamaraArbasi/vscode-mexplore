@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil do Usuário - Movin Explore</title>
+  <link rel="stylesheet" href="../static/usuario.css" />
+  <link rel="stylesheet" href="../static/style.css" />
+  <link rel="stylesheet" href="../static/area-usuario.css" />
+  <link rel="icon" href="../static/favicon.png" type="image/png" />
+  <style>
+    section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Bem-vindo, João!</h1>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Seção do Perfil -->
+    <section id="perfil">
+      <h2>Seu Perfil</h2>
+      <div class="perfil-usuario">
+        <div class="perfil-foto">
+          <img src="../static/default-avatar.png" alt="Foto do Usuário" class="foto-perfil" />
+        </div>
+        <div class="perfil-dados">
+          <p><strong>Nome:</strong> João Silva</p>
+          <p><strong>Email:</strong> joao.silva@email.com</p>
+          <p><strong>Data de Nascimento:</strong> 15/03/1995</p>
+          <button class="btn-editar-perfil">Editar Perfil</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Configurações -->
+    <section id="configuracoes">
+      <h2>Configurações</h2>
+      <form class="config-form" action="#" method="post">
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" value="João Silva" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="joao.silva@email.com" />
+
+        <button type="button" id="toggle-senha" class="botao-voltar">Quero mudar minha senha</button>
+
+        <div id="senha-campo" style="display: none;">
+          <label for="senha">Nova Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Digite a nova senha" />
+        </div>
+
+        <button type="submit" class="botao-voltar">Salvar Alterações</button>
+      </form>
+    </section>
+
+    <!-- Seção do Histórico -->
+    <section id="historico">
+      <h2>Histórico de Atividades</h2>
+      <ul class="historico-lista">
+        <li>Participou do evento Slackline Extreme - 10/06/2025</li>
+        <li>Medalha de Bronze no ranking de Ultimate Frisbee - 05/06/2025</li>
+        <li>Atualizou o perfil - 01/06/2025</li>
+        <li>Comentou no artigo sobre Canoagem - 28/05/2025</li>
+        <li>Entrou no Movin Explore - 15/04/2025</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 MOVIN EXPLORE. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const botaoSenha = document.getElementById('toggle-senha');
+      const campoSenha = document.getElementById('senha-campo');
+
+      botaoSenha.addEventListener('click', () => {
+        const visivel = campoSenha.style.display === 'block';
+        campoSenha.style.display = visivel ? 'none' : 'block';
+        botaoSenha.textContent = visivel
+          ? 'Quero mudar minha senha'
+          : 'Cancelar mudança de senha';
+      });
+    });
+  </script>
+</body>
+</html>
